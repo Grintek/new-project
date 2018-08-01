@@ -8,10 +8,12 @@
 }
 
 .App-header {
-  background-color: #222;
-  height: 150px;
+  background: linear-gradient(#acac87, #fff75e);
+  height: 80px;
   padding: 20px;
   color: white;
+  box-shadow: inset 0px 0px 30px 5px black,
+0px 0px 30px 2px bisque;
 }
 
 .App-title {
@@ -21,4 +23,7 @@
 .App-intro {
   font-size: large;
 }
-
+.block-button{
+  margin-left: 30px;
+  margin-top: 30px;
+}
