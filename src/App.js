@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './style/App.scss';
+import ButtonApp from './ButtonApp'
 
 class App extends Component {
   render() {
@@ -8,7 +9,7 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
           <div className="block-button">
-
+              <ButtonApp/>
           </div>
         </header>
         <p className="App-intro">
