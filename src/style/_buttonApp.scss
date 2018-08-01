@@ -1,6 +1,6 @@
 .but_on {
   height: 50px;
-  width: 100px;
+  width: 150px;
   background: radial-gradient(black, blue);
   color: darkgray;
   border: 2px #008080 solid;
@@ -8,4 +8,6 @@
   box-shadow: inset 0px 0px 15px 3px aqua;
   font-family: Florence, cursive;
   font-size: 20px;
+  float: left;
+  margin-right: 20px;
 }

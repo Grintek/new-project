@@ -1,21 +1,55 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './style/App.scss';
-import ButtonApp from './ButtonApp'
+import { BrowserRouter, Route, Link } from 'react-router-dom';
+
+class Welcome extends Component{
+    render(){
+        return <div>
+            <h1 className="textApp textWelcome">WElCOME</h1>
+            <div className="indentation"> </div>
+        </div>;
+    }
+}
+
+class Calculator extends Component{
+    render(){
+        return <h1 className="textApp">Calculator</h1>;
+    }
+
+}
+
+class Notes extends Component{
+    render(){
+        return <h1 className="textApp">Notes</h1>;
+    }
+
+}
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <div className="block-button">
-              <ButtonApp/>
-          </div>
-        </header>
-        <p className="App-intro">
+        <BrowserRouter>
+            <div className="App">
+                <header className="App-header">
+                    <div className="block-button">
+                        <ul>
+                            <Link className="but_on textButton_top" to="/">Welcome</Link>
+                            <Link className="but_on textButton_top" to="/calculator">Calculator</Link>
+                            <Link className="but_on textButton_top" to="/notes">Notes</Link>
+                        </ul>
+                    </div>
+                </header>
+                <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
+                </p>
+
+
+                  <Route exact path="/" component={Welcome}/>
+                  <Route path="/calculator" component={Calculator}/>
+                  <Route path="/notes" component={Notes}/>
+            </div>
+        </BrowserRouter>
     );
   }
 }

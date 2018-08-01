@@ -9,6 +9,7 @@
 
 .App-header {
   background: linear-gradient(#acac87, #fff75e);
+
   height: 80px;
   padding: 20px;
   color: white;
@@ -23,8 +24,8 @@
 .App-intro {
   font-size: large;
 }
-.block-button{
-
-
+.indentation{
+  margin-top: 500px;
 }
 @import "buttonApp";
+@import "textApp";
