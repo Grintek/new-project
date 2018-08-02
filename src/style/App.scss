@@ -8,12 +8,12 @@
 }
 
 .App-header {
-  background: linear-gradient(#acac87, #fff75e);
+  background: linear-gradient(#354881, #000000);
 
   height: 80px;
   padding: 20px;
   color: white;
-  box-shadow: inset 0px 0px 30px 5px black,
+  box-shadow: inset 0px 0px 60px 10px black,
 0px 0px 30px 2px bisque;
 }
 
@@ -29,3 +29,4 @@
 }
 @import "buttonApp";
 @import "textApp";
+@import "calculator";
