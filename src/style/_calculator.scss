@@ -20,3 +20,31 @@
   float: left;
 
 }
+
+$formWidth: 200px;
+$forHeight: 30px;
+
+.cal_form{
+  height: $forHeight + 40px;
+  padding-top: 20px;
+  margin-right: auto;
+  margin-left: auto;
+  width: 457px;
+  border-radius: 10px;
+  background: linear-gradient(#1d1d3c , #312f86 );
+  box-shadow: 0px 0px 15px 2px #1c251e;
+}
+
+form{
+  width: $formWidth;
+
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.formCal{
+  width: $formWidth;
+  height: $forHeight;
+  margin-left: auto;
+  margin-right: auto;
+}
