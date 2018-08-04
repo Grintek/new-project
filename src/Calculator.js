@@ -6,29 +6,35 @@ class Calculator extends Component{
     constructor(props){
         super(props);
         this.state = {
-            form: "" , b1: "1", b2: 2, b3: 3, b4: 4, b5: 5,
+            form: "" , b1: 1, b2: 2, b3: 3, b4: 4, b5: 5,
             b6: 6, b7: 7, b8: 8, b9: 9, b0: 0, clear: "clear", plus: "+",
             minus: "-", divide: "/", multiply: "*", equally: "=", nam_br: null
         };
         this.buttonNumb = this.buttonNumb.bind(this);
     }
-    buttonNumb(e){
+    buttonNumb(e) {
 
-        this.setState(prevState => ({
-            form: prevState.form + e
-        }));
+
+        if (e === this.state.equally) {
+            let num = eval(this.state.form);
+            this.setState(prevState => ({
+                form: prevState.form = num
+            }));
+
+        } else if (e === this.state.b1 || this.state.b2 || this.state.b3 || this.state.b4 || this.state.b5 || this.state.b6 || this.state.b7 || this.state.b8 || this.state.b9 || this.state.b0){
+            this.setState(prevState => ({
+                form: prevState.form + e
+            }));
+        } 
+
+
         if(e === this.state.clear){
             this.setState(prevState => ({
                 form: prevState.form = ""
             }));
+            console.log(this.state.nam_bar);
         }
-        if(e === this.state.plus){
-            let num = parseInt(this.state.form, 10);
-
-            this.state.nam_br = num;
-            console.log(this.state.nambr);
-        }
-
+        console.log(e);
 
     }
 
