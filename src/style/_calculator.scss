@@ -21,8 +21,8 @@
 
 }
 
-$formWidth: 200px;
-$forHeight: 30px;
+$formWidth: 350px;
+$forHeight: 40px;
 
 .cal_form{
   height: $forHeight + 40px;
@@ -36,7 +36,7 @@ $forHeight: 30px;
 }
 
 form{
-  width: $formWidth;
+  width: $formWidth + 5px;
 
   margin-left: auto;
   margin-right: auto;
@@ -47,4 +47,9 @@ form{
   height: $forHeight;
   margin-left: auto;
   margin-right: auto;
+  border-radius: 10px;
+  border: 2px #00abff solid;
+  font-size: 40px;
+  color: limegreen;
+  margin-top: 5px;
 }

@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './style/App.scss';
 import { BrowserRouter, Route, Link } from 'react-router-dom';
 import Calculator from './Calculator';
-import Button from '@material-ui/core/Button';
-import Grid from '@material-ui/core/Grid';
 
 
 class Welcome extends Component{
