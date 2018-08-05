@@ -8,33 +8,46 @@ class Calculator extends Component{
         this.state = {
             form: "" , b1: 1, b2: 2, b3: 3, b4: 4, b5: 5,
             b6: 6, b7: 7, b8: 8, b9: 9, b0: 0, clear: "clear", plus: "+",
-            minus: "-", divide: "/", multiply: "*", equally: "=", nam_br: null
+            minus: "-", divide: "/", multiply: "*", equally: "="
         };
         this.buttonNumb = this.buttonNumb.bind(this);
     }
     buttonNumb(e) {
 
 
-        if (e === this.state.equally) {
+        if( e === this.state.plus || e === this.state.minus || e === this.state.divide || e === this.state.multiply) {
+            if (this.state.form.slice(-1) === this.state.plus || this.state.form.slice(-1) === this.state.minus || this.state.form.slice(-1) !== this.state.multiply || this.state.form.slice(-1) !== this.state.divide) {
+                this.setState(prevState => ({
+                    form: prevState.form + e
+                }));
+                console.log(this.state.form);
+            }else {
+                this.setState(prevState => ({
+                    form: prevState.form + e
+                }));
+            }
+        }
+
+        else if (e === this.state.b1 || e === this.state.b2 || e === this.state.b3 || e === this.state.b4 || e === this.state.b5 || e === this.state.b6 || e === this.state.b7 || e === this.state.b8 || e === this.state.b9 || e === this.state.b0){
+            this.setState(prevState => ({
+                form: prevState.form + e
+            }));
+        }
+
+
+
+        if (e === this.state.equally && this.state.form !== "") {
             let num = eval(this.state.form);
             this.setState(prevState => ({
                 form: prevState.form = num
             }));
-
-        } else if (e === this.state.b1 || this.state.b2 || this.state.b3 || this.state.b4 || this.state.b5 || this.state.b6 || this.state.b7 || this.state.b8 || this.state.b9 || this.state.b0){
-            this.setState(prevState => ({
-                form: prevState.form + e
-            }));
-        } 
-
-
+        }
         if(e === this.state.clear){
             this.setState(prevState => ({
                 form: prevState.form = ""
             }));
-            console.log(this.state.nam_bar);
         }
-        console.log(e);
+
 
     }
 
@@ -86,22 +99,22 @@ class Calculator extends Component{
                 <div className="cal_block_button_manipulation">
                     <Grid container spacing={24}>
                         <Grid item xs={9}>
-                            <Button onClick={this.buttonNumb.bind(this, this.state.plus)} variant="contained" color="primary">+</Button>
+                            <Button onClick={this.buttonNumb.bind(this, this.state.plus)} variant="contained" color="primary">{ this.state.plus }</Button>
                         </Grid>
                         <Grid item xs={2}>
-                            <Button onClick={this.buttonNumb.bind(this, this.state.minus)} variant="contained" color="primary">-</Button>
+                            <Button onClick={this.buttonNumb.bind(this, this.state.minus)} variant="contained" color="primary">{ this.state.minus }</Button>
                         </Grid>
                         <Grid item xs={9}>
-                            <Button onClick={this.buttonNumb.bind(this, this.state.divide)} variant="contained" color="primary">/</Button>
+                            <Button onClick={this.buttonNumb.bind(this, this.state.divide)} variant="contained" color="primary">{ this.state.divide }</Button>
                         </Grid>
                         <Grid item xs={2}>
-                            <Button onClick={this.buttonNumb.bind(this, this.state.multiply)} variant="contained" color="primary">*</Button>
+                            <Button onClick={this.buttonNumb.bind(this, this.state.multiply)} variant="contained" color="primary">{ this.state.multiply }</Button>
                         </Grid>
                         <Grid item xs={9}>
-                            <Button onClick={this.buttonNumb.bind(this, this.state.equally)} variant="contained" color="primary">=</Button>
+                            <Button onClick={this.buttonNumb.bind(this, this.state.equally)} variant="contained" color="primary">{ this.state.equally }</Button>
                         </Grid>
                         <Grid item xs={2}>
-                            <Button onClick={this.buttonNumb.bind(this, this.state.clear)} variant="contained" color="primary">clear</Button>
+                            <Button onClick={this.buttonNumb.bind(this, this.state.clear)} variant="contained" color="primary">{ this.state.clear }</Button>
                         </Grid>
                     </Grid>
 
