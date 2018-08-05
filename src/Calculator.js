@@ -18,7 +18,7 @@ class Calculator extends Component{
         if( e === this.state.plus || e === this.state.minus || e === this.state.divide || e === this.state.multiply) {
             let last = this.state.form.slice(-1);
 
-            if ( last === this.state.plus || last === this.state.minus || last !== this.state.multiply || last !== this.state.divide) {
+            if ( last !== this.state.plus || last !== this.state.minus || last !== this.state.multiply || last !== this.state.divide) {
                 this.setState(prevState => ({
                     form: prevState.form + e
                 }));
