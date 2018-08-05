@@ -16,14 +16,17 @@ class Calculator extends Component{
 
 
         if( e === this.state.plus || e === this.state.minus || e === this.state.divide || e === this.state.multiply) {
-            if (this.state.form.slice(-1) === this.state.plus || this.state.form.slice(-1) === this.state.minus || this.state.form.slice(-1) !== this.state.multiply || this.state.form.slice(-1) !== this.state.divide) {
+            let last = this.state.form.slice(-1);
+
+            if ( last === this.state.plus || last === this.state.minus || last !== this.state.multiply || last !== this.state.divide) {
                 this.setState(prevState => ({
                     form: prevState.form + e
                 }));
-                console.log(this.state.form);
+                console.log(this.state.form.slice(-1));
+
             }else {
                 this.setState(prevState => ({
-                    form: prevState.form + e
+                    form: prevState.form
                 }));
             }
         }
