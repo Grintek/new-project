@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './style/App.scss';
 import { BrowserRouter, Route, Link } from 'react-router-dom';
 import Calculator from './Calculator';
+import Button from '@material-ui/core/Button';
 
 
 class Welcome extends Component{
@@ -16,8 +17,40 @@ class Welcome extends Component{
 
 
 class Notes extends Component{
+    constructor(props){
+        super(props);
+
+        this.state = {
+            block: [], number: 0
+        };
+        this.buttonCreateNotes = this.buttonCreateNotes.bind(this)
+    }
+
+    buttonCreateNotes(){
+
+        this.setState(prevState => ({
+            number: prevState.number + 1
+        }));
+        for(let i = 0; i >= this.state.number; i++) {
+            this.setState(prevState => ({
+                block: prevState.block = [i]
+            }));
+        }
+        console.log(this.state.number);
+        console.log(this.state.block)
+
+    }
     render(){
-        return <h1 className="textApp">Notes</h1>;
+        return (
+
+            <div>
+                <h1 className="textApp">Notes</h1>
+                <div>{this.state.block.map((num) => <div key={num}>Fak</div>)}</div>
+
+                <button  className="create_notes"  onClick={this.buttonCreateNotes}>+</button>
+            </div>
+
+        );
     }
 
 }
