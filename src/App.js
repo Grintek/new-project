@@ -51,6 +51,9 @@ class Notes extends Component{
         this.setState(prevState => ({
             block: prevState.block = mas
         }));
+        this.setState(prevState => ({
+            number: prevState.number - 1
+        }));
 
     }
     render(){
@@ -61,7 +64,7 @@ class Notes extends Component{
                 {this.state.block.map((num) =>
                     <div key={num} className="box_note">
                         <button className="clear_notes"><p className="clear_p" onClick={this.buttonClearNote.bind(this, num)}>x</p></button>
-                        <input type="text" name="name"/>
+                        <input className="formCal inpt_note" type="text" name="name"/>
                     </div>)}
 
                 <button  className="create_notes"  onClick={this.buttonCreateNotes}>+</button>

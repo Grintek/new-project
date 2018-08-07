@@ -3,7 +3,7 @@
   width: 70px;
   height: 70px;
   border-radius: 100%;
-  background: brown;
+  background: #434ea5;
   color: #ffffff;
   font-size: 60px;
   text-align: center;
@@ -14,21 +14,30 @@
   width: 40px;
   height: 40px;
   border-radius: 100%;
-  background: brown;
+  background: #95a597;
   color: #ffffff;
   padding-bottom: 6px;
   font-size: 20px;
   text-align: center;
-font-family: "Comic Sans MS";
+  font-family: "Comic Sans MS";
+  float: left;
+
 }
 .clear_p{
   margin: 0px;
 
 }
 .box_note{
-  background: #1c251e;
-  width: 350px;
+  background: #3e2854;
+  width: 400px;
   float: left;
   border-radius: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 20px;
+  box-shadow: 0px 0px 15px 1px #545254;
+}
 
+.inpt_note{
+margin: 10px;
 }
