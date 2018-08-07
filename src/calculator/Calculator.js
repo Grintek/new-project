@@ -11,47 +11,40 @@ class Calculator extends Component{
             minus: "-", divide: "/", multiply: "*", equally: "="
         };
         this.buttonNumb = this.buttonNumb.bind(this);
+        this.buttonSumm = this.buttonSumm.bind(this);
     }
     buttonNumb(e) {
-
-
-        if( e === this.state.plus || e === this.state.minus || e === this.state.divide || e === this.state.multiply) {
-            let last = this.state.form.slice(-1);
-
-            if ( last !== this.state.plus || last !== this.state.minus || last !== this.state.multiply || last !== this.state.divide) {
-                this.setState(prevState => ({
-                    form: prevState.form + e
-                }));
-                console.log(this.state.form.slice(-1));
-
-            }else {
-                this.setState(prevState => ({
-                    form: prevState.form
-                }));
-            }
-        }
-
-        else if (e === this.state.b1 || e === this.state.b2 || e === this.state.b3 || e === this.state.b4 || e === this.state.b5 || e === this.state.b6 || e === this.state.b7 || e === this.state.b8 || e === this.state.b9 || e === this.state.b0){
             this.setState(prevState => ({
                 form: prevState.form + e
             }));
+    }
+    buttonSumm(ae){
+        let last = this.state.form.slice(-1);
+        if( ae === this.state.plus || ae === this.state.minus || ae === this.state.divide || ae === this.state.multiply) {
+
+            if ( last !== this.state.plus || last !== this.state.minus || last !== this.state.multiply || last !== this.state.divide) {
+                this.setState(prevState => ({
+                    form: prevState.form + ae
+                }));
+                console.log(last);
+
+            }
         }
 
-
-
-        if (e === this.state.equally && this.state.form !== "") {
+        if (ae === this.state.equally && this.state.form !== "") {
             let num = eval(this.state.form);
+            let numS = String(num);
             this.setState(prevState => ({
-                form: prevState.form = num
+                form: prevState.form = numS
             }));
+
         }
-        if(e === this.state.clear){
+        console.log(this.state.form);
+        if(ae === this.state.clear){
             this.setState(prevState => ({
                 form: prevState.form = ""
             }));
         }
-
-
     }
 
     render(){
@@ -102,22 +95,22 @@ class Calculator extends Component{
                 <div className="cal_block_button_manipulation">
                     <Grid container spacing={24}>
                         <Grid item xs={9}>
-                            <Button onClick={this.buttonNumb.bind(this, this.state.plus)} variant="contained" color="primary">{ this.state.plus }</Button>
+                            <Button onClick={this.buttonSumm.bind(this, this.state.plus)} variant="contained" color="primary">{ this.state.plus }</Button>
                         </Grid>
                         <Grid item xs={2}>
-                            <Button onClick={this.buttonNumb.bind(this, this.state.minus)} variant="contained" color="primary">{ this.state.minus }</Button>
+                            <Button onClick={this.buttonSumm.bind(this, this.state.minus)} variant="contained" color="primary">{ this.state.minus }</Button>
                         </Grid>
                         <Grid item xs={9}>
-                            <Button onClick={this.buttonNumb.bind(this, this.state.divide)} variant="contained" color="primary">{ this.state.divide }</Button>
+                            <Button onClick={this.buttonSumm.bind(this, this.state.divide)} variant="contained" color="primary">{ this.state.divide }</Button>
                         </Grid>
                         <Grid item xs={2}>
-                            <Button onClick={this.buttonNumb.bind(this, this.state.multiply)} variant="contained" color="primary">{ this.state.multiply }</Button>
+                            <Button onClick={this.buttonSumm.bind(this, this.state.multiply)} variant="contained" color="primary">{ this.state.multiply }</Button>
                         </Grid>
                         <Grid item xs={9}>
-                            <Button onClick={this.buttonNumb.bind(this, this.state.equally)} variant="contained" color="primary">{ this.state.equally }</Button>
+                            <Button onClick={this.buttonSumm.bind(this, this.state.equally)} variant="contained" color="primary">{ this.state.equally }</Button>
                         </Grid>
                         <Grid item xs={2}>
-                            <Button onClick={this.buttonNumb.bind(this, this.state.clear)} variant="contained" color="primary">{ this.state.clear }</Button>
+                            <Button onClick={this.buttonSumm.bind(this, this.state.clear)} variant="contained" color="primary">{ this.state.clear }</Button>
                         </Grid>
                     </Grid>
 
