@@ -19,7 +19,7 @@ class Calculator extends Component{
             }));
     }
     buttonSumm(ae){
-        let last = this.state.form.slice(-1);
+        const last = this.state.form.slice(-1);
         if( ae === this.state.plus || ae === this.state.minus || ae === this.state.divide || ae === this.state.multiply) {
 
             if ( last !== this.state.plus || last !== this.state.minus || last !== this.state.multiply || last !== this.state.divide) {
