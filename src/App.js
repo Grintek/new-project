@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './style/App.scss';
 import { BrowserRouter, Route, Link } from 'react-router-dom';
 import Calculator from './calculator/Calculator';
+import Notes from './notes/Notes';
 
 import Button from '@material-ui/core/Button';
 
@@ -14,69 +15,6 @@ class Welcome extends Component{
         </div>;
     }
 }
-
-
-
-class Notes extends Component{
-    constructor(props){
-        super(props);
-
-        this.state = {
-            block: [], number: 0
-        };
-        this.buttonClearNote = this.buttonClearNote.bind(this);
-        this.buttonCreateNotes = this.buttonCreateNotes.bind(this);
-    }
-
-    buttonCreateNotes(){
-
-        this.setState(prevState => ({
-            number: prevState.number + 1
-        }));
-
-        let a = [];
-        for(let i = 0; i <= this.state.number; i++) {
-           a[i] = i;
-        }
-        this.setState(prevState => ({
-            block: prevState.block = a
-        }));
-        
-        console.log(this.state.block)
-
-    }
-    buttonClearNote(num){
-        console.log(this.state.block);
-        let mas = this.state.block;
-        mas.splice(mas.indexOf(num), 1);
-        this.setState(prevState => ({
-            block: prevState.block = mas
-        }));
-        this.setState(prevState => ({
-            number: prevState.number - 1
-        }));
-
-    }
-    render(){
-        return (
-
-            <div>
-                <h1 className="textApp">Notes</h1>
-                {this.state.block.map((num) =>
-                    <div key={num} className="box_note">
-                        <button className="clear_notes"><p className="clear_p" onClick={this.buttonClearNote.bind(this, num)}>x</p></button>
-                        <input className="formCal inpt_note" type="text" name="name"/>
-                    </div>)}
-
-                <button  className="create_notes"  onClick={this.buttonCreateNotes}>+</button>
-            </div>
-
-        );
-    }
-
-}
-
-
 
 class App extends Component {
     constructor(props){
@@ -104,7 +42,7 @@ class App extends Component {
                             <Link className="but_on textButton_top" to="/notes">Notes</Link>
                         </ul>
                     </div>
-                    <p>{this.state.value}</p>
+                    <p className="num_shap">{this.state.value}</p>
                 </header>
                 <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
