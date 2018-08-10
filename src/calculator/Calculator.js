@@ -2,16 +2,20 @@ import React, { Component } from 'react';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 
+
 class Calculator extends Component{
+
+
     constructor(props){
         super(props);
         this.state = {
             form: "" , b1: 1, b2: 2, b3: 3, b4: 4, b5: 5,
             b6: 6, b7: 7, b8: 8, b9: 9, b0: 0, clear: "clear", plus: "+",
-            minus: "-", divide: "/", multiply: "*", equally: "="
+            minus: "-", divide: "/", multiply: "*", equally: "=", equallyNums: ""
         };
         this.buttonNumb = this.buttonNumb.bind(this);
         this.buttonSumm = this.buttonSumm.bind(this);
+
     }
     buttonNumb(e) {
             this.setState(prevState => ({
@@ -19,7 +23,8 @@ class Calculator extends Component{
             }));
     }
     buttonSumm(ae){
-        const last = this.state.form.slice(-1);
+        let last = this.state.form.slice(-1);
+
         if( ae === this.state.plus || ae === this.state.minus || ae === this.state.divide || ae === this.state.multiply) {
 
             if ( last !== this.state.plus || last !== this.state.minus || last !== this.state.multiply || last !== this.state.divide) {
@@ -31,20 +36,30 @@ class Calculator extends Component{
             }
         }
 
-        if (ae === this.state.equally && this.state.form !== "") {
-            let num = eval(this.state.form);
-            let numS = String(num);
-            this.setState(prevState => ({
-                form: prevState.form = numS
-            }));
 
-        }
+
+
         console.log(this.state.form);
         if(ae === this.state.clear){
             this.setState(prevState => ({
                 form: prevState.form = ""
             }));
         }
+    }
+    equlare(ae) {
+        if (ae === this.state.equally && this.state.form !== "") {
+            let num = eval(this.state.form);
+            let numS = String(num);
+            this.setState(prevState => ({
+                form: prevState.form = numS
+            }));
+            this.setState(prevState => ({
+                form: prevState.equallyNums = numS
+            }));
+
+
+        }
+        return this.state.form;
     }
 
     render(){
@@ -107,10 +122,13 @@ class Calculator extends Component{
                             <Button onClick={this.buttonSumm.bind(this, this.state.multiply)} variant="contained" color="primary">{ this.state.multiply }</Button>
                         </Grid>
                         <Grid item xs={9}>
-                            <Button onClick={this.buttonSumm.bind(this, this.state.equally)} variant="contained" color="primary">{ this.state.equally }</Button>
+                            <Button onClick={this.equlare.bind(this, this.state.equally)} variant="contained" color="primary">=</Button>
                         </Grid>
                         <Grid item xs={2}>
                             <Button onClick={this.buttonSumm.bind(this, this.state.clear)} variant="contained" color="primary">{ this.state.clear }</Button>
+                        </Grid>
+                        <Grid item xs={2}>
+                            <Button onClick={()=>this.props.equalityNam(this.state.equallyNums)} variant="contained" color="primary">Вывести в шапку</Button>
                         </Grid>
                     </Grid>
 
@@ -120,4 +138,6 @@ class Calculator extends Component{
     }
 }
 
+
 export default Calculator;
+
