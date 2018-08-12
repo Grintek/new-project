@@ -12,8 +12,7 @@ class Calculator extends Component{
     constructor(props){
         super(props);
         this.state = {
-            form: "" , clear: "clear", plus: "+",
-            minus: "-", divide: "/", multiply: "*", equally: "=", equallyNums: ""
+            form: "", equallyNums: ""
         };
         this.buttonNumb = this.buttonNumb.bind(this);
         this.buttonSumm = this.buttonSumm.bind(this);
@@ -27,9 +26,9 @@ class Calculator extends Component{
     buttonSumm(ae){
         let last = this.state.form.slice(-1);
 
-        if( ae === this.state.plus || ae === this.state.minus || ae === this.state.divide || ae === this.state.multiply) {
+        if( ae === "+" || ae === "-" || ae === "/" || ae === "*") {
 
-            if ( last !== this.state.plus || last !== this.state.minus || last !== this.state.multiply || last !== this.state.divide) {
+            if ( last !== "+" || last !== "-" || last !== "*" || last !== "/") {
                 this.setState(prevState => ({
                     form: prevState.form + ae
                 }));
@@ -37,14 +36,14 @@ class Calculator extends Component{
             }
         }
         console.log(this.state.form);
-        if(ae === this.state.clear){
+        if(ae === "clear"){
             this.setState(prevState => ({
                 form: prevState.form = ""
             }));
         }
     }
     equlare(ae) {
-        if (ae === this.state.equally && this.state.form !== "") {
+        if (ae === "=" && this.state.form !== "") {
             let num = eval(this.state.form);
             let numS = String(num);
             this.setState(prevState => ({
@@ -95,7 +94,8 @@ class Calculator extends Component{
                             </Grid>
                         )}
                         <Grid item xs={2}>
-                            <Button onClick={this.equlare.bind(this, this.state.equally)} variant="contained" color="primary">=</Button> // выводит =
+
+                            <Button onClick={this.equlare.bind(this, "=")} variant="contained" color="primary">=</Button> {/* выводит итог*/}
                         </Grid>
                         <Grid item xs={2}>
                             <Button onClick={()=>this.props.equalityNam(this.state.equallyNums)} variant="contained" color="primary">Вывести в шапку</Button>

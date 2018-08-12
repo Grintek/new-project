@@ -43,11 +43,6 @@ class App extends Component {
                     </div>
                     <p className="num_shap">{this.state.value}</p>
                 </header>
-                <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-                </p>
-
-
                   <Route exact path="/" component={Welcome}/>
                   <Route path="/calculator" component={()=><Calculator equalityNam={this.equalityNam.bind(this)}/>}/>
                   <Route path="/notes" component={Notes}/>
