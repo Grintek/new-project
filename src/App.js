@@ -7,13 +7,12 @@ import Notes from './notes/Notes';
 import Button from '@material-ui/core/Button';
 
 
-class Welcome extends Component{
-    render(){
-        return <div>
+function Welcome(){
+
+    return <div>
             <h1 className="textApp textWelcome">WElCOME</h1>
             <div className="indentation"> </div>
         </div>;
-    }
 }
 
 class App extends Component {

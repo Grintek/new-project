@@ -54,6 +54,7 @@
     "test": "node scripts/test.js --env=jsdom"
   },
   "devDependencies": {
+    "babel-plugin-transform-react-statements": "^0.7.3",
     "node-sass": "^4.9.2",
     "sass-loader": "^7.0.3",
     "webpack": "^4.16.3"

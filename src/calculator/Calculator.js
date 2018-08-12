@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 
+
+
+
 // калькулятор
 class Calculator extends Component{
 
@@ -9,8 +12,7 @@ class Calculator extends Component{
     constructor(props){
         super(props);
         this.state = {
-            form: "" , b1: 1, b2: 2, b3: 3, b4: 4, b5: 5,
-            b6: 6, b7: 7, b8: 8, b9: 9, b0: 0, clear: "clear", plus: "+",
+            form: "" , clear: "clear", plus: "+",
             minus: "-", divide: "/", multiply: "*", equally: "=", equallyNums: ""
         };
         this.buttonNumb = this.buttonNumb.bind(this);
@@ -32,13 +34,8 @@ class Calculator extends Component{
                     form: prevState.form + ae
                 }));
                 console.log(last);
-
             }
         }
-
-
-
-
         console.log(this.state.form);
         if(ae === this.state.clear){
             this.setState(prevState => ({
@@ -63,7 +60,11 @@ class Calculator extends Component{
     }
 
     render(){
-
+        const number = { num: [{ xs: 2, number: 1 }, { xs: 2, number: 2 }, { xs: 2, number: 3 },
+                { xs: 5, number: 4 }, { xs: 2, number: 5 }, { xs: 2, number: 6 }, { xs: 2, number: 7 },
+                { xs: 5, number: 8 }, { xs: 2, number: 9 }, { xs: 2, number: 0 }]};
+        const amount = { num: [{ xs: 9, number: "+" }, { xs: 2, number: "-" }, { xs: 9, number: "/" },
+                { xs: 2, number: "*" }, { xs: 9, number: "clear" }]};
         return (
             <div className="cal_block">
                 <div className="cal_form">
@@ -74,58 +75,27 @@ class Calculator extends Component{
                 <h1 className="textApp">Calculator</h1>
                 <div className="cal_block_button_number">
                     <Grid container spacing={24}>
-                        <Grid item xs={2}>
-                            <Button onClick={this.buttonNumb.bind(this, this.state.b1)}  variant="contained" color="primary">{ this.state.b1 }</Button>
-                        </Grid>
-                        <Grid item xs={2}>
-                            <Button onClick={this.buttonNumb.bind(this, this.state.b2)} variant="contained" color="primary">{ this.state.b2 }</Button>
-                        </Grid>
-                        <Grid item xs={2}>
-                            <Button onClick={this.buttonNumb.bind(this, this.state.b3)} variant="contained" color="primary">{ this.state.b3 }</Button>
-                        </Grid>
-                        <Grid item xs={5}>
-                            <Button onClick={this.buttonNumb.bind(this, this.state.b4)} variant="contained" color="primary">{ this.state.b4 }</Button>
-                        </Grid>
-                        <Grid item xs={2}>
-                            <Button onClick={this.buttonNumb.bind(this, this.state.b5)} variant="contained" color="primary">{ this.state.b5 }</Button>
-                        </Grid>
-                        <Grid item xs={2}>
-                            <Button onClick={this.buttonNumb.bind(this, this.state.b6)} variant="contained" color="primary">{ this.state.b6 }</Button>
-                        </Grid>
-                        <Grid item xs={2}>
-                            <Button onClick={this.buttonNumb.bind(this, this.state.b7)} variant="contained" color="primary">{ this.state.b7 }</Button>
-                        </Grid>
-                        <Grid item xs={5}>
-                            <Button onClick={this.buttonNumb.bind(this, this.state.b8)} variant="contained" color="primary">{ this.state.b8 }</Button>
-                        </Grid>
-                        <Grid item xs={2}>
-                            <Button onClick={this.buttonNumb.bind(this, this.state.b9)} variant="contained" color="primary">{ this.state.b9 }</Button>
-                        </Grid>
-                        <Grid item xs={2}>
-                            <Button onClick={this.buttonNumb.bind(this, this.state.b0)} variant="contained" color="primary">{ this.state.b0 }</Button>
-                        </Grid>
+                        {
+                            // выводим цифры для калькулятора
+                            number.num.map((numes, index) =>
+                            <Grid item xs={numes.xs} key={index}>
+                                <Button onClick={this.buttonNumb.bind(this, numes.number)}  variant="contained" color="primary">{ numes.number }</Button>
+                            </Grid>
+                        )}
+
                     </Grid>
 
                 </div>
                 <div className="cal_block_button_manipulation">
                     <Grid container spacing={24}>
-                        <Grid item xs={9}>
-                            <Button onClick={this.buttonSumm.bind(this, this.state.plus)} variant="contained" color="primary">{ this.state.plus }</Button>
-                        </Grid>
+                        { amount.num.map((amoun, index)=>
+                            <Grid item xs={amoun.xs} key={index}>
+                                <Button onClick={this.buttonSumm.bind(this, amoun.number)} variant="contained"
+                                        color="primary">{ amoun.number }</Button>
+                            </Grid>
+                        )}
                         <Grid item xs={2}>
-                            <Button onClick={this.buttonSumm.bind(this, this.state.minus)} variant="contained" color="primary">{ this.state.minus }</Button>
-                        </Grid>
-                        <Grid item xs={9}>
-                            <Button onClick={this.buttonSumm.bind(this, this.state.divide)} variant="contained" color="primary">{ this.state.divide }</Button>
-                        </Grid>
-                        <Grid item xs={2}>
-                            <Button onClick={this.buttonSumm.bind(this, this.state.multiply)} variant="contained" color="primary">{ this.state.multiply }</Button>
-                        </Grid>
-                        <Grid item xs={9}>
-                            <Button onClick={this.equlare.bind(this, this.state.equally)} variant="contained" color="primary">=</Button>
-                        </Grid>
-                        <Grid item xs={2}>
-                            <Button onClick={this.buttonSumm.bind(this, this.state.clear)} variant="contained" color="primary">{ this.state.clear }</Button>
+                            <Button onClick={this.equlare.bind(this, this.state.equally)} variant="contained" color="primary">=</Button> // выводит =
                         </Grid>
                         <Grid item xs={2}>
                             <Button onClick={()=>this.props.equalityNam(this.state.equallyNums)} variant="contained" color="primary">Вывести в шапку</Button>

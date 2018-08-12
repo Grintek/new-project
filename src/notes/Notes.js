@@ -9,8 +9,9 @@ class Notes extends Component{
         this.state = {
             block: [], number: 0
         };
-        this.buttonClearNote = this.buttonClearNote.bind(this);
-        this.buttonCreateNotes = this.buttonCreateNotes.bind(this);
+        this.buttonClearNote = this.buttonClearNote.bind(this); // удаление Notes
+
+        this.buttonCreateNotes = this.buttonCreateNotes.bind(this); // создания Notes
     }
 
     buttonCreateNotes(){
@@ -18,7 +19,7 @@ class Notes extends Component{
         this.setState(prevState => ({
             number: prevState.number + 1
         }));
-
+// каждое нажатие на кнопку создает новую запись в массиве
         let a = [];
         for(let i = 0; i <= this.state.number; i++) {
             a[i] = i;
@@ -27,13 +28,13 @@ class Notes extends Component{
             block: prevState.block = a
         }));
 
-        console.log(this.state.block)
+
 
     }
     buttonClearNote(num){
-        console.log(this.state.block);
+
         let mas = this.state.block;
-        mas.splice(mas.indexOf(num), 1);
+        mas.splice(mas.indexOf(num), 1); // осуществляем поиск по индексу и удаление записи
         this.setState(prevState => ({
             block: prevState.block = mas
         }));
